@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public enum Orientation
-    {
-        RIGHT = 1,
-        LEFT = -1
-    };
-
     private const float speed = 1.0f;
     private const float fallSpeed = 0.1f;
     public Transform pCam;
     public Sword sword;
 
-    Orientation orientation;
+    GlobalConsts.Orientation orientation;
 
 	void Start () {
-        orientation = Orientation.RIGHT;
-        sword.SetSide(Orientation.RIGHT);
+        orientation = GlobalConsts.Orientation.RIGHT;
+        sword.SetSide(GlobalConsts.Orientation.RIGHT);
 	}
 
     private void Update()
@@ -38,13 +32,13 @@ public class Player : MonoBehaviour {
 
         if (moveHorizontal > 0)
         {
-            if (orientation == Orientation.LEFT) sword.SwitchSide();
-            orientation = Orientation.RIGHT;
+            if (orientation == GlobalConsts.Orientation.LEFT) sword.SwitchSide();
+            orientation = GlobalConsts.Orientation.RIGHT;
         } 
         else if (moveHorizontal < 0)
         {
-            if (orientation == Orientation.RIGHT) sword.SwitchSide();
-            orientation = Orientation.LEFT;
+            if (orientation == GlobalConsts.Orientation.RIGHT) sword.SwitchSide();
+            orientation = GlobalConsts.Orientation.LEFT;
         }
     }
 
