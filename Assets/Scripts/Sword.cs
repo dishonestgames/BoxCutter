@@ -8,11 +8,12 @@ public class Sword : MonoBehaviour {
 
     private Transform transform;
     public float offset = 1.0f;
+    public string objectTagToCollideWith;
 
 	// Use this for initialization
 	void Start () {
         transform = this.gameObject.GetComponent<Transform>();
-        SetSide(test.Orientation.RIGHT);
+        SetSide(GlobalConsts.Orientation.RIGHT);
 	}
 	
 	// Update is called once per frame
@@ -27,9 +28,19 @@ public class Sword : MonoBehaviour {
         transform.localPosition = new Vector3(-currentX, 0.0f);
     }
 
-    public void SetSide(test.Orientation o)
+    public void SetSide(GlobalConsts.Orientation o)
     {
         transform.localPosition = new Vector3((int)o * offset, 0.0f);
+        Debug.Log("Sword Pos for " + gameObject.transform.parent.name + ": " + transform.localPosition);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided with " + collision.gameObject.name);
+        if (collision.gameObject.tag == objectTagToCollideWith)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
 }
