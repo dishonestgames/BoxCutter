@@ -27,7 +27,7 @@ public class Sword : MonoBehaviour {
     public void SetSide(GlobalConsts.Orientation o)
     {
         transform.localPosition = new Vector3((int)o * offset, 0.0f);
-        Debug.Log("Sword Pos for " + gameObject.transform.parent.name + ": " + transform.localPosition);
+        //Debug.Log("Sword Pos for " + gameObject.transform.parent.name + ": " + transform.localPosition);
     }
 
     private void OnCollisionEnter(Collision collision)
