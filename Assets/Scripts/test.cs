@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class test : MonoBehaviour {
 
-	//private Transform parentTransform;
+    //private Transform parentTransform;
+
+    public enum Orientation
+    {
+        RIGHT = 1,
+        LEFT = -1
+    };
 
     private const float speed = 1.0f;
     private const float fallSpeed = 1.0f;
     private Rigidbody2D rb;
     public Transform pCam;
     private bool falling;
+    public Sword sword;
+
+    Orientation orientation;
 
 	// Use this for initialization
 	void Start () {
         //rb = this.gameObject.GetComponent<Rigidbody2D>();
         //parentTransform = gameObject.transform;
+        orientation = Orientation.RIGHT;
+        sword.SetSide(Orientation.RIGHT);
         falling = true;
 	}
 
@@ -31,9 +42,18 @@ public class test : MonoBehaviour {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = (falling) ? -fallSpeed : 0.0f;
 
-        this.gameObject.GetComponent<Transform>().position += new Vector3(moveHorizontal, fallSpeed, 0.0f);
+        this.gameObject.GetComponent<Transform>().position += new Vector3(moveHorizontal, /*fallSpee*/0.0f, 0.0f);
 
-
+        if (moveHorizontal > 0)
+        {
+            if (orientation == Orientation.LEFT) sword.SwitchSide();
+            orientation = Orientation.RIGHT;
+        } 
+        else if (moveHorizontal < 0)
+        {
+            if (orientation == Orientation.RIGHT) sword.SwitchSide();
+            orientation = Orientation.LEFT;
+        }
 
     }
 
