@@ -190,7 +190,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &65353134088764814
 BoxCollider:
@@ -211,7 +211,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096462199546052}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b1867d2781c4705a2c40c2cc3df20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.04
   sword: {fileID: 114310017425468598}
 --- !u!114 &114310017425468598
 MonoBehaviour:

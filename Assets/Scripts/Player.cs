@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public Rigidbody rb;
 	public Transform pCam;
 	public Sword sword;
+	public GameObject sideIndicator;
 
     private const float speed = 4.0f;
 	private const float jumpSpeed = 7.0f;
@@ -60,10 +61,18 @@ public class Player : MonoBehaviour {
 
 		// Sword Orientation
 		if (moveHorizontal > 0){
-			if (orientation == GlobalConsts.Orientation.LEFT) sword.SwitchSide();
+			if (orientation == GlobalConsts.Orientation.LEFT) {
+				sword.SwitchSide ();
+				float currentX = sideIndicator.transform.localPosition.x;
+				sideIndicator.transform.localPosition = new Vector3(-currentX, 0.0f);
+			}
 			orientation = GlobalConsts.Orientation.RIGHT;
 		} else if (moveHorizontal < 0){
-			if (orientation == GlobalConsts.Orientation.RIGHT) sword.SwitchSide();
+			if (orientation == GlobalConsts.Orientation.RIGHT) {
+				sword.SwitchSide ();
+				float currentX = sideIndicator.transform.localPosition.x;
+				sideIndicator.transform.localPosition = new Vector3(-currentX, 0.0f);
+			}
 			orientation = GlobalConsts.Orientation.LEFT;
 		}
 
