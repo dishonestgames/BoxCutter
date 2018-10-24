@@ -17,6 +17,9 @@ public class Player : MonoBehaviour {
 	private int weaponTimer = 0;
 	private bool isWeaponOut = false;
 
+    public SwordAudio swordAudio;
+    private PlayerAudio playerAudio;
+
     GlobalConsts.Orientation orientation;
 
 	private void setSwordActive(bool active){
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour {
         sword.SetSide(GlobalConsts.Orientation.RIGHT);
 		rb = GetComponent<Rigidbody> ();
 		setSwordActive(false);
+        playerAudio = gameObject.GetComponent<PlayerAudio>();
 	}
 
     private void FixedUpdate() {
@@ -54,6 +58,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetButton ("Jump") && !hasJumped) {
 			moveDirection.y = jumpSpeed;
 			hasJumped = true;
+            playerAudio.PlayJump();
 		} else {
 			moveDirection.y = rb.velocity.y;
 		}
@@ -70,6 +75,7 @@ public class Player : MonoBehaviour {
 		if (!isWeaponOut && Input.GetKeyDown (KeyCode.DownArrow)) {
 			isWeaponOut = true;
 			setSwordActive(true);
+            swordAudio.PlayClip();
 		} else if (isWeaponOut) {
 			weaponTimer++;
 			if (weaponTimer >= weaponCooldown) {
