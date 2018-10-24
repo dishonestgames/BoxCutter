@@ -19,11 +19,20 @@ public class Player : MonoBehaviour {
 
     GlobalConsts.Orientation orientation;
 
+	private void setSwordActive(bool active){
+		if (active) {
+			sword.gameObject.SetActive (true);
+			sword.objectTagToCollideWith = "Enemy";
+		} else {
+			sword.gameObject.SetActive (false);
+		}
+	}
+
 	void Start () {
         orientation = GlobalConsts.Orientation.RIGHT;
         sword.SetSide(GlobalConsts.Orientation.RIGHT);
 		rb = GetComponent<Rigidbody> ();
-		sword.gameObject.GetComponent<Renderer> ().enabled = false;
+		setSwordActive(false);
 	}
 
     private void FixedUpdate() {
@@ -44,7 +53,7 @@ public class Player : MonoBehaviour {
 		// Check if the player jumped
 		if (Input.GetButton ("Jump") && !hasJumped) {
 			moveDirection.y = jumpSpeed;
-			hasJumped = true;
+			//hasJumped = true;
 		} else {
 			moveDirection.y = rb.velocity.y;
 		}
@@ -60,13 +69,13 @@ public class Player : MonoBehaviour {
 
 		if (!isWeaponOut && Input.GetKeyDown (KeyCode.DownArrow)) {
 			isWeaponOut = true;
-			sword.gameObject.GetComponent<Renderer> ().enabled = true;
+			setSwordActive(true);
 		} else if (isWeaponOut) {
 			weaponTimer++;
 			if (weaponTimer >= weaponCooldown) {
 				weaponTimer = 0;
 				isWeaponOut = false;
-				sword.gameObject.GetComponent<Renderer> ().enabled = false;
+				setSwordActive(false);
 			}
 		}
 		rb.velocity = moveDirection;

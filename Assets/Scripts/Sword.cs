@@ -12,6 +12,7 @@ public class Sword : MonoBehaviour {
 	void Start () {
         transform = this.gameObject.GetComponent<Transform>();
         SetSide(GlobalConsts.Orientation.RIGHT);
+		Debug.Log ("START WITH: " + objectTagToCollideWith);
 	}
 	
 	// Update is called once per frame
@@ -30,10 +31,11 @@ public class Sword : MonoBehaviour {
         //Debug.Log("Sword Pos for " + gameObject.transform.parent.name + ": " + transform.localPosition);
     }
 
-    private void OnCollisionEnter(Collision collision)
+	private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Collided with " + collision.gameObject.name);
-        if (collision.gameObject.tag == objectTagToCollideWith)
+		Debug.Log(this.gameObject.transform.parent.name + " collided with " + collision.gameObject.name);
+		Debug.Log (collision.gameObject.tag + ", " + objectTagToCollideWith);
+		if (collision.gameObject.tag == objectTagToCollideWith)
         {
             Destroy(collision.gameObject);
         }
