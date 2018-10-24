@@ -89,6 +89,10 @@ public class Player : MonoBehaviour {
 			if (Vector3.Dot (contact.normal, Vector3.up) > 0.5) {
 				hasJumped = false;
 			}
+			if(Vector3.Dot (contact.normal, Vector3.left) > 0.5 || Vector3.Dot (contact.normal, Vector3.right) > 0.5 )
+			{
+				hasJumped = false;
+			}
 		}
     }
 }
