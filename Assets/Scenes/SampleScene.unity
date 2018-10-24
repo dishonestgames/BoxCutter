@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 1
-  objectTagToCollideWith: 
+  objectTagToCollideWith: Enemy
 --- !u!65 &373578211
 BoxCollider:
   m_ObjectHideFlags: 0
