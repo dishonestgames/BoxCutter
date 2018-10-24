@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-    Transform transform;
+    private Transform transform;
     Transform player;
-    float speed = 0.04f;
-    const float MIN_DISTANCE = 1.0f;
+    public float speed = 0.08f;
+    private const float MIN_DISTANCE = 1.0f;
     public Sword sword;
     GlobalConsts.Orientation direction;
 

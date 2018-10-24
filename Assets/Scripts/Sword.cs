@@ -33,8 +33,8 @@ public class Sword : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider collision)
     {
-		Debug.Log(this.gameObject.transform.parent.name + " collided with " + collision.gameObject.name);
-		Debug.Log (collision.gameObject.tag + ", " + objectTagToCollideWith);
+		//Debug.Log(this.gameObject.transform.parent.name + " collided with " + collision.gameObject.name);
+		//Debug.Log (collision.gameObject.tag + ", " + objectTagToCollideWith);
 		if (collision.gameObject.tag == objectTagToCollideWith)
         {
             Destroy(collision.gameObject);

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 	public Sword sword;
 
     private const float speed = 4.0f;
-	private const float jumpSpeed = 8.0f;
+	private const float jumpSpeed = 7.0f;
 	private bool hasJumped = false;
 	private Vector3 moveDirection = Vector3.zero;
 
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
 		// Check if the player jumped
 		if (Input.GetButton ("Jump") && !hasJumped) {
 			moveDirection.y = jumpSpeed;
-			//hasJumped = true;
+			hasJumped = true;
 		} else {
 			moveDirection.y = rb.velocity.y;
 		}
