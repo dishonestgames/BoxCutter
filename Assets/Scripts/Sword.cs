@@ -12,7 +12,6 @@ public class Sword : MonoBehaviour {
 	void Start () {
         transform = this.gameObject.GetComponent<Transform>();
         SetSide(GlobalConsts.Orientation.RIGHT);
-		Debug.Log ("START WITH: " + objectTagToCollideWith);
 	}
 	
 	// Update is called once per frame
@@ -37,6 +36,11 @@ public class Sword : MonoBehaviour {
 		//Debug.Log (collision.gameObject.tag + ", " + objectTagToCollideWith);
 		if (collision.gameObject.tag == objectTagToCollideWith)
         {
+			if (collision.gameObject.tag == "Enemy") {
+				GameController.addKill ();
+			} else if (collision.gameObject.tag == "Player") {
+				GameController.endGame ();
+			}
             Destroy(collision.gameObject);
         }
     }
